@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <android.support.v7.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="16dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/white"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relativelayout1">
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:scaleType="fitXY"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/im"
+                    android:id="@+id/gifImageView" />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:layout_below="@+id/relativelayout1">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:id="@+id/title"
+                        android:text="Send Instant Message"
+                        android:textAlignment="center"
+                        />
+
+                    <EditText
+                        android:id="@+id/heading"
+                        android:hint="Title or Name"
+                        android:layout_below="@id/title"
+                        android:layout_marginTop="5dp"
+                        android:inputType="textCapWords"
+                        android:background="@drawable/editext_round2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:paddingLeft="5dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"/>
+
+                    <EditText
+                        android:id="@+id/description"
+                        android:hint="Message"
+                        android:layout_below="@id/heading"
+                        android:inputType="textCapWords"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/editext_round2"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"/>
+
+                    <Button
+                        android:id="@+id/pBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/description"
+                        android:background="@drawable/editext_round1"
+                        android:text="Send"
+                        android:textAllCaps="false"
+                        android:textColor="#ffffff" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/description"
+                        android:layout_alignTop="@id/pBtn"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone"
+                        android:theme="@style/RedAccent" />
+
+                </RelativeLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

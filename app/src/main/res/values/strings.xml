@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WUT</string>
+    <string name="wut_nec">Make <b>What You Think</b> Field Optional</string>
+    <string name="wut_field">Remove <b>What You Think</b> Field</string>
+    <string name="cant_saybuttom">Remove <b>Can\'t Say</b> Button</string>
+    <string name="yesnobutton">Remove <b>Yes/No</b> Button</string>
+    <string name="survey_hint">What You Think (Mandatory)</string>
+    <string name="ns">Off</string>
+    <string name="note"><b>Recommend:</b> There should be minimum of 30 minutes of difference between each event.</string>
+    <string name="imandwut"><b>Instant Message: </b>Informative notifications sent by CR and other people of your class.\n<b>WUT: </b><b>W</b>hat <b>Y</b>ou <b>T</b>hink notifications. Tool for voting in favour or against a decision.</string>
+</resources>
