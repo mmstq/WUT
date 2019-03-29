@@ -1,25 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:background="@color/white">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="2dp"
-        android:paddingLeft="2dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="2dp"
-        tools:context=".subs">
+   <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         xmlns:app="http://schemas.android.com/apk/res-auto"
+         xmlns:tools="http://schemas.android.com/tools"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:paddingStart="2dp"
+         android:layout_marginTop="4dp"
+         android:paddingEnd="2dp"
+         tools:context=".Subs">
+
+         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/header"
+            app:cardBackgroundColor="@color/bluegrey"
+            app:cardCornerRadius="5dp"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="true"
+            android:layout_height="50dp">
+
+            <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:weightSum="3"
+               android:padding="2dp"
+               android:orientation="horizontal">
+
+               <ImageView
+                  android:id="@+id/bf"
+                  android:layout_width="0dp"
+                  android:layout_weight="1"
+                  android:padding="7dp"
+                  android:layout_height="match_parent"
+                  android:src="@drawable/breakfast"
+                  android:onClick="show"
+                  android:tint="@color/white"/>
+
+               <View
+                  android:layout_width="1dp"
+                  android:layout_margin="2dp"
+                  android:layout_marginTop="2dp"
+                  android:layout_height="match_parent"
+                  android:background="@color/white"/>
+
+               <ImageView
+                  android:id="@+id/lunch"
+                  android:layout_width="0dp"
+                  android:layout_weight="1"
+                  android:padding="2dp"
+                  android:layout_height="match_parent"
+                  android:src="@drawable/lunch"
+                  android:onClick="show"
+                  android:tint="@color/white"/>
+
+               <View
+                  android:layout_width="1dp"
+                  android:layout_margin="2dp"
+                  android:layout_marginTop="2dp"
+                  android:layout_height="match_parent"
+                  android:background="@color/white"/>
+
+               <ImageView
+                  android:id="@+id/dinner"
+                  android:layout_width="0dp"
+                  android:layout_weight="1"
+                  android:padding="7dp"
+                  android:layout_height="match_parent"
+                  android:onClick="show"
+                  android:src="@drawable/dinner"
+                  android:tint="@color/white"/>
+
+            </LinearLayout>
 
 
-        <android.support.v7.widget.CardView
+         </android.support.v7.widget.CardView>
+
+         <android.support.v7.widget.CardView
             android:id="@+id/cv"
             android:layout_width="wrap_content"
+            android:layout_below="@id/header"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="#2a3f48"
             app:cardCornerRadius="5dp"
@@ -28,274 +96,267 @@
 
             <RelativeLayout
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/heading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+               <TextView
+                  android:id="@+id/heading"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
 
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Set Notifications For Events"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Set Notifications For Events"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textStyle="bold"
+                  tools:ignore="HardcodedText" />
 
-                <Switch
-                    android:id="@+id/bFood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/heading"
-                    android:layout_marginTop="10dp"
-                    android:layout_toStartOf="@id/text12"
-                    android:layout_toLeftOf="@id/text12"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Off  "
-                    android:textColor="@color/Red"
-                    android:textStyle="bold" />
+               <Switch
+                  android:id="@+id/bFood"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/heading"
+                  android:layout_marginTop="10dp"
+                  android:layout_toStartOf="@id/text12"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/text1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/bFood"
-                    android:layout_alignBottom="@id/bFood"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="center_vertical"
-                    android:text="Breakfast"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+               <TextView
+                  android:id="@+id/text1"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/bFood"
+                  android:layout_alignBottom="@id/bFood"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Breakfast"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/bfoodtext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:layout_below="@id/bFood"
-                    android:textColor="#898989" />
+               <TextView
+                  android:id="@+id/bfoodtext"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/bFood"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/text12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/bFood"
-                    android:layout_alignBottom="@id/bFood"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center_vertical"
-                    android:text="On"
-                    android:textColor="@color/green"
-                    android:textStyle="bold" />
+               <TextView
+                  android:id="@+id/text12"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/bFood"
+                  android:layout_alignBottom="@id/bFood"
+                  android:layout_alignParentEnd="true"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
 
-                <Switch
-                    android:id="@+id/lFood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/bFood"
-                    android:layout_alignStart="@+id/bFood"
-                    android:layout_alignLeft="@+id/bFood"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Off  "
-                    android:textColor="@color/Red"
-                    android:textStyle="bold" />
+               <Switch
+                  android:id="@+id/lFood"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/bFood"
+                  android:layout_alignStart="@+id/bFood"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/lFood"
-                    android:layout_alignBottom="@id/lFood"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="center_vertical"
-                    android:text="Lunch"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/lFood"
+                  android:layout_alignBottom="@id/lFood"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Lunch"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/lfoodtext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:layout_below="@id/lFood"
-                    android:textColor="#898989" />
+               <TextView
+                  android:id="@+id/lfoodtext"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/lFood"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/lFood"
-                    android:layout_alignBottom="@id/lFood"
-                    android:layout_toEndOf="@id/lFood"
-                    android:layout_toRightOf="@id/lFood"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center_vertical"
-                    android:text="On"
-                    android:textColor="@color/green"
-                    android:textStyle="bold" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/lFood"
+                  android:layout_alignBottom="@id/lFood"
+                  android:layout_toEndOf="@id/lFood"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
 
-                <Switch
-                    android:id="@+id/dFood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/lFood"
-                    android:layout_alignStart="@+id/bFood"
-                    android:layout_alignLeft="@+id/bFood"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Off  "
-                    android:textColor="@color/Red"
-                    android:textStyle="bold" />
+               <Switch
+                  android:id="@+id/dFood"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/lFood"
+                  android:layout_alignStart="@+id/bFood"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/dFood"
-                    android:layout_alignBottom="@id/dFood"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="center_vertical"
-                    android:text="Dinner"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/dFood"
+                  android:layout_alignBottom="@id/dFood"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Dinner"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/dfoodtext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:layout_below="@id/dFood"
-                    android:textColor="#898989" />
+               <TextView
+                  android:id="@+id/dfoodtext"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/dFood"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/dFood"
-                    android:layout_alignBottom="@id/dFood"
-                    android:layout_toEndOf="@id/dFood"
-                    android:layout_toRightOf="@id/dFood"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center_vertical"
-                    android:text="On"
-                    android:textColor="@color/green"
-                    android:textStyle="bold" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/dFood"
+                  android:layout_alignBottom="@id/dFood"
+                  android:layout_toEndOf="@id/dFood"
+                  android:layout_toRightOf="@id/dFood"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
 
-                <Switch
-                    android:id="@+id/sTimeTable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/dFood"
-                    android:layout_alignStart="@+id/bFood"
-                    android:layout_alignLeft="@+id/bFood"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Off  "
-                    android:textColor="@color/Red"
-                    android:textStyle="bold" />
+               <Switch
+                  android:id="@+id/sTimeTable"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/dFood"
+                  android:layout_alignStart="@+id/bFood"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/sTimeTable"
-                    android:layout_alignBottom="@id/sTimeTable"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="center_vertical"
-                    android:text="Time Table"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sTimeTable"
+                  android:layout_alignBottom="@id/sTimeTable"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Time Table"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/tttext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sTimeTable"
-                    android:fontFamily="sans-serif"
-                    android:textColor="#898989" />
+               <TextView
+                  android:id="@+id/tttext"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/sTimeTable"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/sTimeTable"
-                    android:layout_alignBottom="@id/sTimeTable"
-                    android:layout_toEndOf="@id/sTimeTable"
-                    android:layout_toRightOf="@id/sTimeTable"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center_vertical"
-                    android:text="On"
-                    android:textColor="@color/green"
-                    android:textStyle="bold" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sTimeTable"
+                  android:layout_alignBottom="@id/sTimeTable"
+                  android:layout_toEndOf="@id/sTimeTable"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
 
-                <Switch
-                    android:id="@+id/holiday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sTimeTable"
-                    android:layout_alignStart="@+id/bFood"
-                    android:layout_alignLeft="@+id/bFood"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Off  "
-                    android:textColor="@color/Red"
-                    android:textStyle="bold" />
+               <Switch
+                  android:id="@+id/holiday"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/sTimeTable"
+                  android:layout_alignStart="@+id/bFood"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/holiday"
-                    android:layout_alignBottom="@id/holiday"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="center_vertical"
-                    android:text="Holiday"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/holiday"
+                  android:layout_alignBottom="@id/holiday"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Holiday"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/hdtext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/holiday"
-                    android:fontFamily="sans-serif"
-                    android:textColor="#898989" />
+               <TextView
+                  android:id="@+id/hdtext"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/holiday"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/holiday"
-                    android:layout_alignBottom="@id/holiday"
-                    android:layout_toEndOf="@id/holiday"
-                    android:layout_toRightOf="@id/holiday"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center_vertical"
-                    android:text="On"
-                    android:textColor="@color/green"
-                    android:textStyle="bold" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/holiday"
+                  android:layout_alignBottom="@id/holiday"
+                  android:layout_toEndOf="@id/holiday"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/hdtext"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/green"
-                    android:gravity="center_vertical"
-                    tools:ignore="RtlCompat">
+               <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/hdtext"
+                  android:layout_marginTop="10dp"
+                  android:background="@color/green"
+                  android:gravity="center_vertical"
+                  tools:ignore="RtlCompat">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#223239"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="5dp"
-                        android:text="@string/note"
-                        android:textAlignment="center"
-                        android:textColor="@color/orange"
-                        android:layout_marginStart="5dp" />
+                  <TextView
+                     android:id="@+id/tv"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="5dp"
+                     android:background="#223239"
+                     android:fontFamily="sans-serif-condensed"
+                     android:padding="5dp"
+                     android:text="@string/note"
+                     android:textAlignment="center"
+                     android:textColor="@color/orange" />
 
-                </RelativeLayout>
+
+               </RelativeLayout>
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
+         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cv"
@@ -305,142 +366,273 @@
             app:cardUseCompatPadding="true">
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
+               android:id="@+id/rl"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/heading1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Subscribe To Events"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
+               <TextView
+                  android:id="@+id/heading1"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Subscribe To Notification"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textStyle="bold" />
 
-                <Switch
-                    android:id="@+id/im"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/heading1"
-                    android:layout_marginTop="10dp"
-                    android:layout_toStartOf="@id/text3"
-                    android:layout_toLeftOf="@id/text3"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Off  "
-                    android:textColor="@color/Red"
-                    android:textStyle="bold" />
+               <Switch
+                  android:id="@+id/im"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/heading1"
+                  android:layout_marginTop="10dp"
+                  android:layout_toStartOf="@id/text3"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/im"
-                    android:layout_alignBottom="@id/im"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="center_vertical"
-                    android:text="Instant Messages"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/im"
+                  android:layout_alignBottom="@id/im"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Instant Messages"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/imtext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:layout_below="@id/im"
-                    android:textColor="#898989" />
+               <TextView
+                  android:id="@+id/imtext"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/im"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/text3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/im"
-                    android:layout_alignBottom="@id/im"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center_vertical"
-                    android:text="On"
-                    android:textColor="@color/green"
-                    android:textStyle="bold" />
+               <TextView
+                  android:id="@+id/text3"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/im"
+                  android:layout_alignBottom="@id/im"
+                  android:layout_alignParentEnd="true"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
 
-                <Switch
-                    android:id="@+id/survey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/im"
-                    android:layout_alignStart="@+id/im"
-                    android:layout_alignLeft="@+id/im"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Off  "
-                    android:textColor="@color/Red"
-                    android:textStyle="bold" />
+               <Switch
+                  android:id="@+id/survey"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/im"
+                  android:layout_alignStart="@+id/im"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/survey"
-                    android:layout_alignBottom="@id/survey"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="center_vertical"
-                    android:text="WUT"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/survey"
+                  android:layout_alignBottom="@id/survey"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="What U Think?"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/surveytext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:layout_below="@id/survey"
-                    android:textColor="#898989" />
+               <TextView
+                  android:id="@+id/surveytext"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/survey"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/survey"
-                    android:layout_alignBottom="@id/survey"
-                    android:layout_toEndOf="@id/survey"
-                    android:layout_toRightOf="@id/survey"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:gravity="center_vertical"
-                    android:text="On"
-                    android:textColor="@color/green"
-                    android:textStyle="bold" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/survey"
+                  android:layout_alignBottom="@id/survey"
+                  android:layout_toEndOf="@id/survey"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/surveytext"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/skyblue"
-                    android:gravity="center_vertical"
-                    tools:ignore="RtlCompat">
+               <Switch
+                  android:id="@+id/sgrp1"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/survey"
+                  android:layout_alignStart="@+id/im"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_toEndOf="@id/v1"
-                        android:layout_toRightOf="@id/v1"
-                        android:padding="5dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center_vertical"
-                        android:layout_marginLeft="5dp"
-                        android:background="#223239"
-                        android:text="@string/imandwut"
-                        android:textAlignment="center"
-                        android:textColor="@color/orange"
-                        android:layout_marginStart="5dp" />
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sgrp1"
+                  android:layout_alignBottom="@id/sgrp1"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Group I"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
 
-                </RelativeLayout>
+               <TextView
+                  android:id="@+id/textgp1"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/sgrp1"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
+
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sgrp1"
+                  android:layout_alignBottom="@id/sgrp1"
+                  android:layout_toEndOf="@id/sgrp1"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
+
+               <Switch
+                  android:id="@+id/sgrp2"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/sgrp1"
+                  android:layout_alignStart="@+id/im"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
+
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sgrp2"
+                  android:layout_alignBottom="@id/sgrp2"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Group II"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
+
+               <TextView
+                  android:id="@+id/textgp2"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/sgrp2"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
+
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sgrp2"
+                  android:layout_alignBottom="@id/sgrp2"
+                  android:layout_toEndOf="@id/sgrp2"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
+
+               <Switch
+                  android:id="@+id/sgrp3"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/sgrp2"
+                  android:layout_alignStart="@+id/im"
+                  android:layout_marginTop="20dp"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:text="Off  "
+                  android:textColor="@color/Red"
+                  android:textStyle="bold" />
+
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sgrp3"
+                  android:layout_alignBottom="@id/sgrp3"
+                  android:fontFamily="sans-serif-condensed"
+                  android:gravity="center_vertical"
+                  android:text="Group III"
+                  android:textColor="@color/lightgrey"
+                  android:textSize="15sp" />
+
+               <TextView
+                  android:id="@+id/textgp3"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/sgrp3"
+                  android:fontFamily="sans-serif"
+                  android:textColor="@color/white" />
+
+               <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@id/sgrp3"
+                  android:layout_alignBottom="@id/sgrp3"
+                  android:layout_toEndOf="@id/sgrp3"
+                  android:fontFamily="sans-serif-smallcaps"
+                  android:gravity="center_vertical"
+                  android:text="On"
+                  android:textColor="@color/green"
+                  android:textStyle="bold" />
+
+
+               <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/textgp3"
+                  android:layout_marginTop="10dp"
+                  android:background="@color/skyblue"
+                  android:gravity="center_vertical"
+                  tools:ignore="RtlCompat">
+
+
+
+                  <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="match_parent"
+                     android:layout_marginStart="5dp"
+                     android:layout_toEndOf="@id/v1"
+                     android:background="#223239"
+                     android:fontFamily="sans-serif-condensed"
+                     android:gravity="center_vertical"
+                     android:padding="5dp"
+                     android:text="@string/imandwut"
+                     android:textAlignment="center"
+                     android:textColor="@color/orange" />
+
+               </RelativeLayout>
 
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+
+         </android.support.v7.widget.CardView>
+
+      </RelativeLayout>
 
 
-    </RelativeLayout>
+   </ScrollView>
 
-</ScrollView>
+
+</RelativeLayout>
 

@@ -1,108 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent">
 
-    <android.support.v7.widget.CardView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="16dp"
-        app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="@android:color/white"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/relativelayout1">
-                <pl.droidsonroids.gif.GifImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="135dp"
-                    android:scaleType="fitXY"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/im"
-                    android:id="@+id/gifImageView" />
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:layout_centerHorizontal="true"
+   android:layout_centerVertical="true"
+   android:layout_gravity="center_vertical"
+   app:cardBackgroundColor="@android:color/white"
+   app:cardCornerRadius="10dp"
+   app:cardElevation="16dp"
+   app:cardUseCompatPadding="true">
 
-            </RelativeLayout>
+   <RelativeLayout
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:paddingBottom="10dp"
-                android:layout_below="@+id/relativelayout1">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:fontFamily="sans-serif-smallcaps"
-                        android:id="@+id/title"
-                        android:text="Send Instant Message"
-                        android:textAlignment="center"
-                        />
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/heading"
-                        android:hint="Title or Name"
-                        android:layout_below="@id/title"
-                        android:layout_marginTop="5dp"
-                        android:inputType="textCapWords"
-                        android:background="@drawable/editext_round2"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:paddingLeft="5dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"/>
+      <pl.droidsonroids.gif.GifImageView
+         android:id="@+id/gifImageView"
+         android:layout_width="match_parent"
+         android:layout_height="135dp"
+         android:layout_marginStart="10dp"
+         android:layout_marginEnd="10dp"
+         android:layout_centerHorizontal="true"
+         android:scaleType="fitXY"
+         android:src="@drawable/im" />
 
-                    <EditText
-                        android:id="@+id/description"
-                        android:hint="Message"
-                        android:layout_below="@id/heading"
-                        android:inputType="textCapWords"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/editext_round2"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:paddingLeft="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"/>
+      <TextView
+         android:id="@+id/title"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/gifImageView"
+         android:fontFamily="sans-serif-smallcaps"
+         android:layout_marginTop="-10dp"
+         android:layout_marginStart="10dp"
+         android:layout_marginEnd="10dp"
+         android:text="Send Instant Message"
+         android:textAlignment="center"
+         android:textColor="#000000"
+         android:textSize="20sp" />
 
-                    <Button
-                        android:id="@+id/pBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/description"
-                        android:background="@drawable/editext_round1"
-                        android:text="Send"
-                        android:textAllCaps="false"
-                        android:textColor="#ffffff" />
+      <EditText
+         android:id="@+id/heading"
+         android:layout_width="match_parent"
+         android:layout_height="40dp"
+         android:layout_below="@id/title"
+         android:layout_marginTop="10dp"
+         android:background="@drawable/white_bg"
+         android:layout_marginStart="10dp"
+         android:layout_marginEnd="10dp"
+         android:hint="Title or Name"
+         android:inputType="textCapWords"
+         android:paddingStart="5dp"
+         android:paddingEnd="5dp" />
 
-                    <ProgressBar
-                        android:id="@+id/progress_bar"
-                        android:layout_width="30dp"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/description"
-                        android:layout_alignTop="@id/pBtn"
-                        android:layout_centerHorizontal="true"
-                        android:visibility="gone"
-                        android:theme="@style/RedAccent" />
+      <EditText
+         android:id="@+id/description"
+         android:layout_width="match_parent"
+         android:layout_height="80dp"
+         android:layout_below="@id/heading"
+         android:layout_margin="10dp"
+         android:background="@drawable/white_bg"
+         android:hint="Message"
+         android:inputType="textCapWords"
+         android:paddingStart="5dp"
+         android:paddingLeft="5dp"
+         android:paddingEnd="5dp" />
 
-                </RelativeLayout>
-            </ScrollView>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+      <Button
+         android:id="@+id/sendTo"
+         android:layout_width="match_parent"
+         android:layout_height="35dp"
+         android:layout_below="@id/description"
+         android:background="@drawable/sendlist"
+         android:drawableStart="@drawable/send_to_icon"
+         android:drawablePadding="-20dp"
+         android:paddingStart="20dp"
+         android:paddingEnd="20dp"
+         android:layout_marginStart="10dp"
+         android:layout_marginEnd="10dp"
+         android:text="Select Msg Receiver"
+         android:textAllCaps="false"
+         android:textColor="@color/grey"
+         tools:ignore="HardcodedText" />
 
-</RelativeLayout>
+      <Button
+         android:id="@+id/voteBtn"
+         android:layout_width="match_parent"
+         android:layout_height="35dp"
+         android:layout_below="@id/sendTo"
+         android:layout_marginTop="20dp"
+         android:drawableStart="@drawable/send"
+         android:paddingStart="130dp"
+         android:paddingEnd="130dp"
+         android:background="@drawable/sendto_bg"
+         android:textAllCaps="false"
+         android:textColor="#ffffff" />
+
+      <ProgressBar
+         android:id="@+id/progress_bar"
+         android:layout_width="30dp"
+         android:layout_height="35dp"
+         android:layout_below="@id/sendTo"
+         android:layout_alignTop="@id/voteBtn"
+         android:layout_centerHorizontal="true"
+         android:theme="@style/RedAccent"
+         android:visibility="gone" />
+
+   </RelativeLayout>
+</android.support.v7.widget.CardView>

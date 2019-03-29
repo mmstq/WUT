@@ -2,17 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item
-        android:id="@+id/close"
-        android:title="Close"/>
-    <item
-        android:id="@+id/open"
-        android:title="Open" />
-    <item
-        android:id="@+id/delete"
-        android:title="Delete"/>
+   <item
+      android:id="@+id/open"
+      android:title="Open Voting" />
 
-    <item android:id="@+id/response"
-        android:title="Response"/>
+   <item
+      android:id="@+id/response"
+      android:title="See Responses" />
+
+   <item
+      android:id="@+id/delete"
+      android:title="Delete Survey" />
 
 </menu>

@@ -1,63 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="mmstq.com.wut">
+   xmlns:tools="http://schemas.android.com/tools"
+   package="mmstq.com.wut">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+   <uses-permission android:name="android.permission.INTERNET" />
+   <uses-permission android:name="android.permission.WAKE_LOCK" />
+   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+   <application
+      android:allowBackup="true"
+      android:icon="@drawable/ic_launcher"
+      android:label="@string/app_name"
+      android:roundIcon="@drawable/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme"
+      tools:ignore="GoogleAppIndexingWarning">
 
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/msg" />
-        <!--
-             Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more.
-        -->
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent" />
+      <meta-data
+         android:name="com.google.firebase.messaging.default_notification_icon"
+         android:resource="@drawable/msg" />
+      <!--
+           Set color used with incoming notification messages. This is used when no color is set for the incoming
+           notification message. See README(https://goo.gl/6BKBk7) for more.
+      -->
+      <receiver android:name=".WidgetAdapter">
+         <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+         </intent-filter>
+         <meta-data
+            android:name="android.appwidget.provider"
+            android:resource="@layout/widget_params" />
+      </receiver>
+      <meta-data
+         android:name="com.google.firebase.messaging.default_notification_color"
+         android:resource="@color/colorAccent" />
 
-        <service android:name=".MS">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+      <service android:name=".MS">
+         <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+         </intent-filter>
+      </service>
 
-         <receiver android:name="mmstq.com.wut.onBoot">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
+      <receiver android:name="mmstq.com.wut.onBoot">
 
-        <receiver
-            android:name=".MyAlarm"
-            android:exported="false"
-            android:process=":remote" />
+         <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+         </intent-filter>
+      </receiver>
 
-        <activity android:name=".main"
-            android:screenOrientation="portrait">
+      <receiver
+         android:name=".MyAlarm"
+         android:exported="false"
+         android:process=":remote" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+      <activity
+         android:name=".Main"
+         android:screenOrientation="portrait">
 
-        </activity>
+         <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+         </intent-filter>
 
-        <activity android:name=".survey" android:screenOrientation="portrait"/>
-        <activity android:name=".buy" android:screenOrientation="portrait"/>
-        <activity android:name=".subs" android:screenOrientation="portrait"/>
+      </activity>
 
-    </application>
+      <activity
+         android:name=".goSurvey"
+         android:screenOrientation="portrait" />
+      <activity
+         android:name=".cSurvey"
+         android:screenOrientation="portrait" />
+      <activity
+         android:name=".Subs"
+         android:screenOrientation="portrait" />
+      <activity android:name=".IM" />
+
+   </application>
 
 </manifest>

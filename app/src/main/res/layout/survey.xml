@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="4dp"
-    tools:context=".survey">
+    tools:context=".goSurvey">
 
 
     <EditText
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:height="55dp"
-        android:background="@drawable/editext_round2"
+        android:background="@drawable/white_bg"
         android:hint="Heading"
         android:inputType="textCapWords"
         android:paddingStart="5dp"
@@ -29,7 +29,7 @@
         android:layout_height="80dp"
         android:layout_below="@id/survey_heading"
         android:layout_marginTop="8dp"
-        android:background="@drawable/editext_round2"
+        android:background="@drawable/white_bg"
         android:hint="Description"
         android:inputType="textCapSentences"
         android:paddingStart="5dp"
@@ -55,7 +55,7 @@
             android:layout_marginLeft="10dp">
 
             <ImageView
-                android:id="@+id/like"
+                android:id="@+id/likeImg"
                 android:layout_width="50dp"
                 android:layout_height="55dp"
                 android:src="@drawable/like_green" />
@@ -64,7 +64,7 @@
                 android:id="@+id/like_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/like"
+                android:layout_below="@id/likeImg"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Yes"
                 android:textAlignment="center"
@@ -84,7 +84,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/dislike"
+                android:id="@+id/dislikeImg"
                 android:layout_width="50dp"
                 android:layout_height="55dp"
                 android:src="@drawable/dislike_red" />
@@ -93,9 +93,9 @@
                 android:id="@+id/dislike_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/dislike"
-                android:layout_alignEnd="@id/dislike"
-                android:layout_alignRight="@id/dislike"
+                android:layout_below="@id/dislikeImg"
+                android:layout_alignEnd="@id/dislikeImg"
+                android:layout_alignRight="@id/dislikeImg"
                 android:fontFamily="sans-serif-condensed"
                 android:text="No"
                 android:textAlignment="center"
@@ -114,7 +114,7 @@
             android:layout_marginRight="20dp">
 
             <ImageView
-                android:id="@+id/say"
+                android:id="@+id/sayImg"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:src="@drawable/cant_say" />
@@ -123,7 +123,7 @@
                 android:id="@+id/say_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/say"
+                android:layout_below="@id/sayImg"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Can't Say"
                 android:textAlignment="center"
@@ -140,7 +140,7 @@
         android:layout_height="80dp"
         android:layout_below="@id/ll2"
         android:layout_marginTop="10dp"
-        android:background="@drawable/editext_round2"
+        android:background="@drawable/white_bg"
         android:enabled="false"
         android:hint="@string/survey_hint"
         android:inputType="textCapSentences"

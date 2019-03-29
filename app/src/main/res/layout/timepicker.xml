@@ -48,13 +48,13 @@
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:fontFamily="sans-serif-condensed"
-                    android:background="@drawable/editext_round"
+                    android:background="@drawable/blue_bg"
                     android:text="Dismiss"
                     android:textColor="#ffffff" />
 
                 <Button
                     style="?android:attr/borderlessButtonStyle"
-                    android:id="@+id/pBtn"
+                    android:id="@+id/voteBtn"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:fontFamily="sans-serif-condensed"
@@ -62,7 +62,7 @@
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:layout_marginLeft="15dp"
-                    android:background="@drawable/editext_round1"
+                    android:background="@drawable/orange_bg"
                     android:text="Set Alarm"
                     android:textColor="#ffffff" />
             </LinearLayout>
