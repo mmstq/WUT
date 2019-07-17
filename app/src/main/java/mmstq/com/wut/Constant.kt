@@ -11,7 +11,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
-import java.util.*
 
 class Constant {
    companion object {
@@ -21,7 +20,7 @@ class Constant {
       var share_link: String? = null
       var isAdmin = false
       private var mDB: AppDatabase? = null
-      private var dao: rawDao? = null
+      private var dao: RawDao? = null
 
       @SuppressLint("SimpleDateFormat")
       fun setTime(ms: Long): String {
@@ -64,7 +63,6 @@ class Constant {
                   val record = Data(key!!, value, category)
                   if (value != null && category != null) with(dao) {
                      this?.addData(record)
-                     Log.d("DB", "$key : $value")
                   }
 
                }

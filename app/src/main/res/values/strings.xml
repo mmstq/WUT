@@ -2,13 +2,15 @@
    <string name="app_name">WUT</string>
    <string name="wut_nec">Make <b>What You Think</b> Field Optional</string>
    <string name="wut_field">Remove <b>What You Think</b> Field</string>
-   <string name="cant_saybuttom">Remove <b>Can\'t Say</b> Button</string>
-   <string name="yesnobutton">Remove <b>Yes/No</b> Button</string>
-   <string name="survey_hint">What You Think (Mandatory)</string>
+   <string name="cantSayButton">Remove <b>Can\'t Say</b> Button</string>
+   <string name="yesNoButton">Remove <b>Yes/No</b> Button</string>
+   <string name="survey_hint">Mandatory</string>
    <string name="ns">Off</string>
    <string name="list"><i>What\'s In</i> List</string>
    <string name="note"><b>Recommend:</b> There should be minimum of 30 minutes of difference between each event.</string>
-   <string name="imandwut"><b>Instant Message: </b>Informative notifications sent by CR and other people of your class.\n<b>WUT: </b><b>W</b>hat <b>Y</b>ou <b>T</b>hink notifications. Tool for voting in favour or against a decision.</string>
+   <string name="imAndWut"><b>Instant Message: </b>Informative notifications sent by CR and other people of your class.\n<b>WUT: </b><b>W</b>hat <b>Y</b>ou <b>T</b>hink notifications. Tool for voting in favour or against a decision.</string>
    <string name="description">WUT : What You Think, is a platform to vote in favour or against a decision, to get important class messages and notices. Get your class Time Table, Know what\'s in breakfast, lunch and dinner. This app also let\'s you know about upcoming holidays.</string>
-   <string name="admin"><b>You\'re Admin</b></string>
+   <string name="admin"><b>True</b></string>
+   <string name="notAdmin"><b>False</b></string>
+   <string name="schedule">Loading today\'s schedule…</string>
 </resources>

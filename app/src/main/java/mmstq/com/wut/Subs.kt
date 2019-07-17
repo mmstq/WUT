@@ -13,11 +13,11 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.Window
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.subs.*
 import java.text.SimpleDateFormat
@@ -194,17 +194,21 @@ class Subs : AppCompatActivity() {
          }
 
       }
-      val sb = Snackbar
+      val sb = CustomSnackbar
               .make(this@Subs.window.decorView.findViewById(android.R.id.content),
-                      desc.toString(),
-                      Snackbar.LENGTH_LONG)
-      val view = sb.view
+                      30000)
+      sb.setText(desc.toString())
+      sb.setAction("Hide", View.OnClickListener {
+         sb.dismiss()
+      })
+
+      /*val view = sb.view
       val tv = view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
       tv.setTextColor(Color.WHITE)
       tv.maxLines = 2
       tv.setBackgroundColor(resources.getColor(R.color.orange))
       tv.typeface = Typeface.MONOSPACE
-      tv.textAlignment = View.TEXT_ALIGNMENT_CENTER
+      tv.textAlignment = View.TEXT_ALIGNMENT_CENTER*/
       sb.show()
 
    }
@@ -316,7 +320,7 @@ class Subs : AppCompatActivity() {
       pBtn.setOnClickListener {
          val calendar = Calendar.getInstance()
 
-         if (android.os.Build.VERSION.SDK_INT >= 23) {
+         if (Build.VERSION.SDK_INT >= 23) {
             calendar.set(calendar.get(Calendar.YEAR),
                     calendar.get(Calendar.MONTH),
                     calendar.get(Calendar.DAY_OF_MONTH),

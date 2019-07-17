@@ -1,12 +1,11 @@
 package mmstq.com.wut
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.migration.Migration
 import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 
-@Database(entities = [Data::class], version = 1)
+@Database(entities = [Data::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
    companion object {
@@ -29,6 +28,6 @@ abstract class AppDatabase : RoomDatabase() {
       }
    }
 
-   abstract fun rawDao(): rawDao
+   abstract fun rawDao(): RawDao
 
 }

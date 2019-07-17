@@ -15,6 +15,8 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       tools:ignore="GoogleAppIndexingWarning">
+      <activity android:name=".Survey"></activity>
+      <activity android:name=".MainActivity" />
 
       <meta-data
          android:name="com.google.firebase.messaging.default_notification_icon"
@@ -22,15 +24,17 @@
       <!--
            Set color used with incoming notification messages. This is used when no color is set for the incoming
            notification message. See README(https://goo.gl/6BKBk7) for more.
-      -->
+        -->
       <receiver android:name=".WidgetAdapter">
          <intent-filter>
             <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
          </intent-filter>
+
          <meta-data
             android:name="android.appwidget.provider"
             android:resource="@layout/widget_params" />
       </receiver>
+
       <meta-data
          android:name="com.google.firebase.messaging.default_notification_color"
          android:resource="@color/colorAccent" />
@@ -41,13 +45,11 @@
          </intent-filter>
       </service>
 
-      <receiver android:name="mmstq.com.wut.onBoot">
-
+      <receiver android:name=".onBoot">
          <intent-filter>
             <action android:name="android.intent.action.BOOT_COMPLETED" />
          </intent-filter>
       </receiver>
-
       <receiver
          android:name=".MyAlarm"
          android:exported="false"
@@ -56,25 +58,22 @@
       <activity
          android:name=".Main"
          android:screenOrientation="portrait">
-
          <intent-filter>
             <action android:name="android.intent.action.MAIN" />
+
             <category android:name="android.intent.category.LAUNCHER" />
          </intent-filter>
-
       </activity>
-
       <activity
-         android:name=".goSurvey"
+         android:name=".GoSurvey"
          android:screenOrientation="portrait" />
       <activity
-         android:name=".cSurvey"
+         android:name=".CSurvey"
          android:screenOrientation="portrait" />
       <activity
          android:name=".Subs"
          android:screenOrientation="portrait" />
       <activity android:name=".IM" />
-
    </application>
 
 </manifest>

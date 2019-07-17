@@ -1,7 +1,6 @@
 package mmstq.com.wut
 
-import android.support.annotation.Keep
-
+import androidx.annotation.Keep
 import java.io.Serializable
 
 @Keep
@@ -20,7 +19,7 @@ class myData : Serializable {
    var noSay: Int = 0
    var noWut: Int = 0
 
-   constructor() {}
+   constructor()
 
    constructor(surveyNo: Long, noDislike: Int, noLike: Int, noWut: Int, noSay: Int, heading: String, description: String, admin: String, say: Boolean, wutOptional: Boolean, likeDislike: Boolean, wut: Boolean, open: Boolean) {
       this.heading = heading

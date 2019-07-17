@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,12 +13,11 @@
     </style>
 
     <style name="login" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimaryDark">@color/darkblue</item>
+        <item name="colorPrimaryDark">@color/darkBlue</item>
         <item name="colorAccent">#23283a</item>
     </style>
 
-     <style name="FullScreenDialog" parent="Theme.AppCompat.Light.Dialog">
+     <style name="FullScreenDialog" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:padding">0dp</item>

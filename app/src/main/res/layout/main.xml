@@ -1,101 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
-   android:background="@color/white"
+   android:background="@color/background"
    tools:context=".Main">
 
    <ImageView
       android:id="@+id/main"
       android:layout_width="match_parent"
-      android:layout_height="290dp"
+      android:layout_height="@dimen/main_image"
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"
-      android:layout_marginStart="0dp"
-      android:layout_marginTop="10dp"
-      android:scaleType="centerCrop"
-      android:scaleX="1.2"
-      android:scaleY="1.25"
+      android:scaleType="centerInside"
+      android:layout_marginTop="@dimen/_20sdp"
       android:src="@drawable/main" />
 
    <Button
       android:id="@+id/surveyButton"
-      style="?android:attr/borderlessButtonStyle"
-      android:layout_width="160dp"
-      android:layout_height="wrap_content"
+      android:layout_width="@dimen/_160sdp"
+      android:layout_height="@dimen/_40sdp"
       android:layout_below="@+id/main"
+      android:layout_marginTop="@dimen/_15sdp"
       android:layout_centerHorizontal="true"
       android:background="@drawable/orange_bg"
       android:drawableStart="@drawable/survey"
       android:drawablePadding="-25dp"
-      android:enabled="false"
       android:fontFamily="sans-serif-condensed"
-      android:paddingStart="35dp"
-      android:text="Survey"
-      android:textColor="#FFFFFF"
+      android:paddingStart="@dimen/_35sdp"
+      android:text="Opinions"
+      android:textColor="@color/white"
       android:textStyle="bold" />
 
-   <Button
-      android:id="@+id/view_survey"
-      style="?android:attr/borderlessButtonStyle"
-      android:layout_width="160dp"
-      android:layout_height="wrap_content"
-      android:layout_below="@id/surveyButton"
-      android:layout_centerHorizontal="true"
-      android:layout_marginTop="5dp"
-      android:background="@drawable/bluegray_bg"
-      android:drawableStart="@drawable/list"
-      android:drawablePadding="-35dp"
-      android:fontFamily="sans-serif-condensed"
-      android:paddingStart="45dp"
-      android:text="View"
-      android:textColor="#FFFFFF"
-      android:textStyle="bold" />
 
    <Button
       android:id="@+id/im"
-      style="?android:attr/borderlessButtonStyle"
-      android:layout_width="160dp"
-      android:layout_height="wrap_content"
-      android:layout_below="@id/view_survey"
+      android:layout_width="@dimen/_160sdp"
+      android:layout_height="@dimen/_40sdp"
+      android:layout_below="@id/surveyButton"
       android:layout_centerHorizontal="true"
-      android:layout_marginTop="5dp"
+      android:layout_marginTop="@dimen/_5sdp"
       android:background="@drawable/green_bg"
       android:drawableStart="@drawable/message"
       android:drawablePadding="-10dp"
-      android:enabled="false"
       android:fontFamily="sans-serif-condensed"
-      android:paddingStart="20dp"
+      android:paddingStart="@dimen/_22sdp"
       android:text="Instant Msg"
-      android:textColor="#FFFFFF"
+      android:textColor="@color/white"
       android:textStyle="bold" />
 
    <Button
       android:id="@+id/subs"
-      style="?android:attr/borderlessButtonStyle"
-      android:layout_width="160dp"
-      android:layout_height="wrap_content"
+      android:layout_width="@dimen/_160sdp"
+      android:layout_height="@dimen/_40sdp"
       android:layout_below="@id/im"
       android:layout_centerHorizontal="true"
-      android:layout_marginTop="5dp"
-      android:background="@drawable/yellow_bg"
+      android:layout_marginTop="@dimen/_5sdp"
+      android:background="@drawable/bluegray_bg"
       android:drawableStart="@drawable/aler"
-      android:drawablePadding="-10dp"
+      android:drawablePadding="-5dp"
       android:fontFamily="sans-serif-condensed"
-      android:paddingStart="15dp"
+      android:paddingStart="@dimen/_20sdp"
       android:text="Subscription"
-      android:textColor="#FFFFFF"
+      android:textColor="@color/white"
       android:textStyle="bold" />
 
-   <ImageView
-      android:id="@+id/admin"
-      android:layout_width="30dp"
-      android:layout_height="30dp"
-      android:layout_alignParentEnd="true"
+
+   <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/navigationView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorPrimary"
+      android:saveEnabled="true"
       android:layout_alignParentBottom="true"
-      android:padding="2dp"
-      android:src="@drawable/admin"
-      android:tint="@color/bluegrey"
-      android:visibility="gone" />
+      app:labelVisibilityMode="labeled"
+      app:itemBackground="@color/colorPrimary"
+      app:itemIconTint="@color/white"
+      app:itemTextColor="@color/white"
+      app:menu="@menu/navigation">
+
+   </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 </RelativeLayout>

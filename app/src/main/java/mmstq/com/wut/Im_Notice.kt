@@ -1,6 +1,6 @@
 package mmstq.com.wut
 
-import android.support.annotation.Keep
+import androidx.annotation.Keep
 
 @Keep
 class Im_Notice {
@@ -8,7 +8,7 @@ class Im_Notice {
    var name: String? = null
    var date: Long = 0
 
-   constructor() {}
+   constructor()
 
    constructor(text: String, name: String, date: Long) {
       this.text = text

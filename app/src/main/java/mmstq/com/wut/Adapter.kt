@@ -6,14 +6,14 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.support.v4.content.ContextCompat
-import android.support.v4.widget.ImageViewCompat
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.*
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.database.*
@@ -27,17 +27,21 @@ import java.util.*
 
 class Adapter
 /**
- * Create a new RecyclerView WidgetAdapter that listens topsb a Firestore Query.  See [ ] for configuration options.
+ * Create a new RecyclerView WidgetAdapter that
+ * listens topsb a Firestore Query.
+ * See [ ] for configuration options.
  *
  * @param options
  */
-internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyclerAdapter<myData, Adapter.DataHolder>(options) {
+internal constructor(options: FirestoreRecyclerOptions<myData>) :
+        FirestoreRecyclerAdapter<myData, Adapter.DataHolder>(options) {
+
    private var finalOpinion = 0
-   private var finalOpstr = ""
+   private var finalOpStr = ""
    private var dr: DatabaseReference? = null
    private var context: Context? = null
    private val length = Constant.mRealSizeWidth
-   internal lateinit var view: View
+   internal lateinit var progressLine: View
 
    override fun onBindViewHolder(holder: DataHolder, position: Int, model: myData) {
 
@@ -45,54 +49,54 @@ internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyc
       if (model.isLikeDislike) {
          vote = model.noSay + model.noDislike + model.noLike
          if (vote / 74 >= 1) {
-            view.layoutParams.width = length
+            progressLine.layoutParams.width = length
          } else {
-            view.layoutParams.width = vote * length / 74
+            progressLine.layoutParams.width = vote * length / 74
          }
       } else {
          vote = model.noWut + model.noSay
          if (vote / 74 >= 1) {
-            view.layoutParams.width = length
+            progressLine.layoutParams.width = length
          } else {
-            view.layoutParams.width = vote * length / 74
+            progressLine.layoutParams.width = vote * length / 74
          }
       }
       if (!model.isOpen) {
-         view.setBackgroundColor(context!!.resources.getColor(R.color.Red))
+         progressLine.setBackgroundColor(ContextCompat.getColor(context!!, R.color.Red))
       }
-      holder.textTop.text = model.heading
-      holder.textTop.setOnClickListener {
+      holder.textTitle.text = model.heading
+      holder.textTitle.setOnClickListener {
 
          if (model.admin == MyAlarm().getValue(context!!, Constant.cellNumber!!)) {
-            if (model.isOpen) adminOption(model, holder.textMid, R.menu.popup_menu1)
-            else adminOption(model, holder.textMid, R.menu.popup_menu)
+            if (model.isOpen) adminOption(model, holder.textSubTitle, R.menu.popup_menu1)
+            else adminOption(model, holder.textSubTitle, R.menu.popup_menu)
          } else {
-            adminOption(model, holder.textMid, R.menu.popup_menu2)
+            adminOption(model, holder.textSubTitle, R.menu.popup_menu2)
          }
       }
-      holder.textMid.text = model.description
-      holder.textMid.setOnClickListener {
+      holder.textSubTitle.text = model.description
+      holder.textSubTitle.setOnClickListener {
 
          if (model.admin == MyAlarm().getValue(context!!, Constant.cellNumber!!)) {
-            if (model.isOpen) adminOption(model, holder.textMid, R.menu.popup_menu1)
-            else adminOption(model, holder.textMid, R.menu.popup_menu)
+            if (model.isOpen) adminOption(model, holder.textSubTitle, R.menu.popup_menu1)
+            else adminOption(model, holder.textSubTitle, R.menu.popup_menu)
          } else {
-            adminOption(model, holder.textMid, R.menu.popup_menu2)
+            adminOption(model, holder.textSubTitle, R.menu.popup_menu2)
          }
       }
-      holder.imageView.setOnClickListener { showDialog(model) }
+      holder.leadingIcon.setOnClickListener { showDialog(model) }
    }
 
    inner class DataHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-      var textTop: TextView
-      var textMid: TextView
-      var imageView: ImageView
+      var textTitle: TextView
+      var textSubTitle: TextView
+      var leadingIcon: ImageView
 
       init {
-         view = itemView.findViewById(R.id.progress)
-         textTop = itemView.findViewById(R.id.upperText)
-         textMid = itemView.findViewById(R.id.lowertext)
-         imageView = itemView.findViewById(R.id.book)
+         progressLine = itemView.findViewById(R.id.progress)
+         textTitle = itemView.findViewById(R.id.upperText)
+         textSubTitle = itemView.findViewById(R.id.lowertext)
+         leadingIcon = itemView.findViewById(R.id.book)
       }
    }
 
@@ -106,16 +110,15 @@ internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyc
    @SuppressLint("SetTextI18n")
    private fun showDialog(model: myData) {
 
-      val noLike = IntArray(1)
-      val noDislike = IntArray(1)
-      val noSay = IntArray(1)
+      var noLike = model.noSay
+      var noDislike = model.noDislike
+      var noSay = model.noSay
 
-      noDislike[0] = model.noDislike
-      noSay[0] = model.noSay
-      val like = booleanArrayOf(false)
-      val dislike = booleanArrayOf(false)
-      val say = booleanArrayOf(false)
-      val wutOptional = booleanArrayOf(model.isWutOptional)
+      var like = false
+      var dislike = false
+      var say = false
+
+      val wutOptional = model.isWutOptional
       val dialog = Dialog(context!!)
       dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
       dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -125,77 +128,100 @@ internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyc
       dialog.desc!!.text = model.description
       dialog.date_text!!.text = Constant.setTime(model.surveyNo)
       dialog.admin_text!!.text = model.admin
-      val color = ColorStateList.valueOf(ContextCompat.getColor(context!!, R.color.lightgrey))
-
-      if (!model.isOpen) {
-         dialog.voteBtn!!.isEnabled = false
-         dialog.survey_wut!!.isEnabled = false
-         dialog.voteBtn!!.text = "Survey Closed"
-      }
+      val color = ColorStateList.valueOf(ContextCompat.getColor(context!!, R.color.headingText))
 
       fun disable(t: TextView, img: ImageView) {
-            img.isEnabled = false
-            ImageViewCompat.setImageTintList(img, color)
-            t.text = "Disabled"
-            t.setTextColor(color)
+         img.isEnabled = false
+         ImageViewCompat.setImageTintList(img, color)
+         t.text = "Disabled"
+         t.setTextColor(color)
+      }
+
+      if (!model.isOpen) {
+
+         dialog.voteBtn!!.isEnabled = false
+         dialog.survey_wut!!.visibility = View.GONE
+         dialog.voteBtn!!.text = "Survey Closed"
+
+         if (model.isLikeDislike) {
+            dialog.likeImg!!.isEnabled = false
+            dialog.dislikeImg!!.isEnabled = false
+            dialog.dislike_text!!.text = MessageFormat.format("{0}%", model.noDislike)
+
+            dialog.like_text!!.text = MessageFormat.format("{0}%", model.noLike)
+            dialog.dislike_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.Red))
+            dialog.like_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.green))
+         }
+         if (model.isSay) {
+            dialog.sayImg!!.isEnabled = false
+            dialog.say_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.orange))
+            dialog.say_text!!.text = MessageFormat.format("{0}%", model.noSay)
          }
 
-      if (!model.isLikeDislike) {
-         disable(dialog.dislike_text!!, dialog.dislikeImg!!)
-         disable(dialog.like_text!!, dialog.likeImg!!)
-      }
+      } else {
 
-      if (!model.isSay) {
-         disable(dialog.say_text!!, dialog.sayImg!!)
-      }
+         if (!model.isLikeDislike) {
+            disable(dialog.dislike_text!!, dialog.dislikeImg!!)
+            disable(dialog.like_text!!, dialog.likeImg!!)
+         }
 
-      if (model.isWut) {
-         dialog.survey_wut!!.visibility = View.VISIBLE
-         if (model.isWutOptional) {
-            dialog.survey_wut!!.hint = "Optional"
+         if (!model.isSay) {
+            disable(dialog.say_text!!, dialog.sayImg!!)
+         }
+
+         if (model.isWut) {
+            dialog.survey_wut!!.visibility = View.VISIBLE
+            if (model.isWutOptional) {
+               dialog.survey_wut!!.hint = "Optional"
+            }
          }
       }
-
 
       dialog.voteBtn!!.setOnClickListener(View.OnClickListener {
          val map = HashMap<String, Any>()
 
-         if (like[0]) {
-            finalOpinion = noLike[0]
-            finalOpstr = "noLike"
-            if (model.isWut && !wutOptional[0] && dialog.survey_wut!!.text.toString() == "") {
+         if (like) {
+            finalOpinion = noLike
+            finalOpStr = "noLike"
+
+            if (model.isWut && !wutOptional && dialog.survey_wut!!.text.toString() == "") {
                dialog.survey_wut!!.error = "Field Is Necessary"
                dialog.survey_wut!!.requestFocus()
                return@OnClickListener
-
             }
-         } else if (dislike[0]) {
-            finalOpinion = noDislike[0]
-            finalOpstr = "noDislike"
-            if (model.isWut && !wutOptional[0] && dialog.survey_wut!!.text.toString() == "") {
+
+         } else if (dislike) {
+            finalOpinion = noDislike
+            finalOpStr = "noDislike"
+
+            if (model.isWut && !wutOptional && dialog.survey_wut!!.text.toString() == "") {
                dialog.survey_wut!!.error = "Field Is Necessary"
                dialog.survey_wut!!.requestFocus()
                return@OnClickListener
             }
 
          } else if (!model.isLikeDislike) {
-            if (!say[0]) {
+
+            if (!say) {
+
                dialog.survey_wut!!.hint = "Necessary"
+
                if (dialog.survey_wut!!.text.toString() == "") {
                   dialog.survey_wut!!.error = "Field Is Necessary"
                   dialog.survey_wut!!.requestFocus()
                   return@OnClickListener
                }
+
                finalOpinion = model.noWut + 1
-               finalOpstr = "noWut"
+               finalOpStr = "noWut"
             }
 
-         } else if (say[0]) {
-            finalOpinion = noSay[0]
-            finalOpstr = "noSay"
+         } else if (say) {
+            finalOpinion = noSay
+            finalOpStr = "noSay"
 
          } else {
-            Toast.makeText(context, "Select One Opinion", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Select An Opinion", Toast.LENGTH_SHORT).show()
             return@OnClickListener
          }
 
@@ -208,6 +234,7 @@ internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyc
 
          dr = FirebaseDatabase.getInstance().reference.child("Feedback").child(model.surveyNo.toString())
          dr!!.addListenerForSingleValueEvent(object : ValueEventListener {
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                if (dataSnapshot.exists()) {
                   dialog.pb!!.visibility = View.GONE
@@ -216,13 +243,16 @@ internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyc
                   dialog.survey_wut!!.setText("")
                   dialog.survey_wut!!.isEnabled = false
                   dialog.voteBtn!!.text = "Voted Already"
+                  dialog.dislike_text!!.text = MessageFormat.format("{0}%", model.noDislike)
+                  dialog.like_text!!.text = MessageFormat.format("{0}%", model.noLike)
+                  dialog.say_text!!.text = MessageFormat.format("{0}%", model.noSay)
 
                } else {
                   dr!!.child(Constant.cellNumber!!).setValue(map).addOnCompleteListener {
                      val query = FirebaseFirestore.getInstance()
                              .collection("Survey")
                              .document(model.surveyNo.toString())
-                     query.update(finalOpstr, finalOpinion).addOnSuccessListener {
+                     query.update(finalOpStr, finalOpinion).addOnSuccessListener {
                         dialog.pb!!.visibility = View.GONE
                         dialog.voteBtn!!.visibility = View.VISIBLE
                         dialog.voteBtn!!.text = "Done"
@@ -254,55 +284,63 @@ internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyc
          })
       })
 
-      dialog.sayImg!!.setOnClickListener { v ->
+      dialog.sayImg!!.setOnClickListener {
          dialog.sayImg!!.setImageResource(R.drawable.cant_say)
-         dialog.say_text!!.setTextColor(v.resources.getColor(R.color.orange))
-         dialog.dislike_text!!.setTextColor(v.resources.getColor(R.color.darkGrey))
-         dialog.like_text!!.setTextColor(v.resources.getColor(R.color.darkGrey))
-         dialog.dislikeImg!!.setImageResource(R.drawable.dislike)
-         dialog.likeImg!!.setImageResource(R.drawable.like)
-         like[0] = false
-         dislike[0] = false
-         say[0] = true
+         dialog.say_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.orange))
+
+         say = true
+         if (model.isLikeDislike) {
+            dialog.dislike_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
+            dialog.like_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
+            dialog.dislikeImg!!.setImageResource(R.drawable.dislike)
+            dialog.likeImg!!.setImageResource(R.drawable.like)
+            like = false
+            dislike = false
+         }
          dialog.survey_wut!!.setText("")
          dialog.survey_wut!!.visibility = View.GONE
-         noSay[0] = model.noSay + 1
+         noSay = model.noSay + 1
       }
-      dialog.dislikeImg!!.setOnClickListener { v ->
+      dialog.dislikeImg!!.setOnClickListener {
          dialog.dislikeImg!!.setImageResource(R.drawable.dislike_red)
-         dialog.dislike_text!!.setTextColor(v.resources.getColor(R.color.Red))
-         dialog.like_text!!.setTextColor(v.resources.getColor(R.color.darkGrey))
-         dialog.say_text!!.setTextColor(v.resources.getColor(R.color.darkGrey))
-         dialog.sayImg!!.setImageResource(R.drawable.can_say)
+         dialog.dislike_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.Red))
+         dialog.like_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
          dialog.likeImg!!.setImageResource(R.drawable.like)
-         like[0] = false
-         dislike[0] = true
-         say[0] = false
+         like = false
+         dislike = true
+
+         if (model.isSay) {
+            say = false
+            dialog.sayImg!!.setImageResource(R.drawable.can_say)
+            dialog.say_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
+         }
          if (model.isWut) {
             dialog.survey_wut!!.visibility = View.VISIBLE
             if (model.isWutOptional) {
-               dialog.survey_wut!!.hint = "What You Think (Optional)"
+               dialog.survey_wut!!.hint = "Optional"
             }
          }
-         noDislike[0] = model.noDislike + 1
+         noDislike = model.noDislike + 1
       }
-      dialog.likeImg!!.setOnClickListener { v ->
+      dialog.likeImg!!.setOnClickListener {
          dialog.likeImg!!.setImageResource(R.drawable.like_green)
-         dialog.like_text!!.setTextColor(v.resources.getColor(R.color.green))
-         dialog.say_text!!.setTextColor(v.resources.getColor(R.color.darkGrey))
-         dialog.dislike_text!!.setTextColor(v.resources.getColor(R.color.darkGrey))
-         dialog.sayImg!!.setImageResource(R.drawable.can_say)
+         dialog.like_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.green))
+         dialog.dislike_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
          dialog.dislikeImg!!.setImageResource(R.drawable.dislike)
-         like[0] = true
-         dislike[0] = false
-         say[0] = false
+         if (model.isSay) {
+            say = false
+            dialog.sayImg!!.setImageResource(R.drawable.can_say)
+            dialog.say_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
+         }
+         like = true
+         dislike = false
          if (model.isWut) {
             dialog.survey_wut!!.visibility = View.VISIBLE
             if (model.isWutOptional) {
-               dialog.survey_wut!!.hint = "What You Think (Optional)"
+               dialog.survey_wut!!.hint = "Optional"
             }
          }
-         noLike[0] = model.noLike + 1
+         noLike = model.noLike + 1
       }
       dialog.show()
 
@@ -353,7 +391,7 @@ internal constructor(options: FirestoreRecyclerOptions<myData>) : FirestoreRecyc
             for (ds in dataSnapshot.children) {
                var value = ds.child("wut").getValue(String::class.java)
                if (value != "" && value != null) {
-                  value = ds.child("phone").getValue(String::class.java) + ": "+ value
+                  value = ds.child("phone").getValue(String::class.java) + ": " + value
                   values.add(value)
                }
             }

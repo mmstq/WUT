@@ -4,16 +4,15 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import androidx.fragment.app.DialogFragment
+import kotlinx.android.synthetic.main.log_in.*
 import kotlinx.android.synthetic.main.log_in.view.*
 
 class Login : DialogFragment() {
 
-   private var phone: EditText? = null
 
    private var onClickListener: View.OnClickListener = View.OnClickListener { v ->
       when (v.id) {
@@ -33,10 +32,10 @@ class Login : DialogFragment() {
          }
          R.id.exit -> System.exit(1)
          else -> {
-            val pNumber = phone!!.text.toString().trim { it <= ' ' }
+            val pNumber = phone_number!!.text.toString().trim { it <= ' ' }
             if (pNumber.isEmpty() || pNumber.length < 10) {
-               phone!!.error = "Number Is Required"
-               phone!!.requestFocus()
+               phone_number!!.error = "Number Is Required"
+               phone_number!!.requestFocus()
                return@OnClickListener
             }
             val phoneNo = "+91$pNumber"
@@ -45,10 +44,10 @@ class Login : DialogFragment() {
             editor.putString("Phone_No", phoneNo)
             editor.putString("pNumber", pNumber)
             editor.apply()
-            phone!!.setText("")
+            phone_number!!.setText("")
             val b = VerifyOTP.newInstance()
             if (fragmentManager != null) {
-               b.show(fragmentManager,"verify")
+               b.show(fragmentManager!!,"verify")
             }
          }
       }
@@ -56,7 +55,6 @@ class Login : DialogFragment() {
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       val v = inflater.inflate(R.layout.log_in, container, false)
-      phone = v.findViewById(R.id.phone_number)
       v.login.setOnClickListener(onClickListener)
       v.github.setOnClickListener(onClickListener)
       v.exit.setOnClickListener(onClickListener)

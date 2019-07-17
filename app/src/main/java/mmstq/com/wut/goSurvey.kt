@@ -1,188 +1,161 @@
 package mmstq.com.wut
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.ViewGroup
 import android.widget.Toast
-
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.survey.*
+import kotlinx.android.synthetic.main.survey.view.*
+import java.util.*
 
-import java.util.HashMap
-
-class goSurvey : AppCompatActivity() {
+class GoSurvey : Fragment() {
    private val map = HashMap<String, Any>()
-   private var byes_no = true
-   private var bsay = true
-   private var bwut = true
-   private var bwut_opt = false
-   private var ready = true
-   private var like: ImageView? = null
-   private var dislike: ImageView? = null
-   private var say: ImageView? = null
-   private var wut: EditText? = null
-   private var like_text: TextView? = null
-   private var dislike_text: TextView? = null
-   private var say_text: TextView? = null
-   private var wut_field: CheckBox? = null
-   private var wut_nec: CheckBox? = null
-   private var yes_no: CheckBox? = null
-   private var inc_say: CheckBox? = null
+   private var isYesNo = true
+   private var isSay = true
+   private var isWut = true
+   private var isWutOptional = false
+   private var activity: Activity? = null
+   private var isReady = true
 
-   private val heading: String?
+   private val heading: String
       get() {
-         val heading = findViewById<EditText>(R.id.survey_heading)
-         val head = heading.text.toString()
 
-         if (head == "") {
-            heading.error = "Enter Heading"
-            heading.requestFocus()
-            ready = false
-            return null
+         val head:String? = survey_heading!!.text.toString()
+         return if (head == null || head =="") {
+            survey_heading.error = "Enter Heading"
+            survey_heading.requestFocus()
+            isReady = false
+            ""
          } else {
-            ready = true
-            return head
+            isReady = true
+            head
          }
-
       }
 
-   private val description: String?
+   private val description: String
       get() {
-         val description = findViewById<EditText>(R.id.survey_description)
-         val des = description.text.toString()
 
-         if (des == "") {
-            description.error = "Enter Heading"
-            description.requestFocus()
-            ready = false
-            return null
+         val des:String? = survey_description!!.text.toString()
+         return if (des == "" || des == null) {
+            survey_description!!.error = "Enter Description"
+            survey_description!!.requestFocus()
+            isReady = false
+            ""
          } else {
-            ready = true
-            return des
+            isReady = true
+            des
          }
       }
 
-   override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
-      setContentView(R.layout.survey)
+   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+      val view = inflater.inflate(R.layout.survey,container,false)
+      view.inc_field!!.setOnCheckedChangeListener { _, _ ->
+         if (inc_field!!.isChecked) {
 
-      wut_field = findViewById(R.id.inc_field)
-      wut_nec = findViewById(R.id.field_necessary)
-      yes_no = findViewById(R.id.inc_yn)
-      inc_say = findViewById(R.id.inc_say)
-      like = findViewById(R.id.likeImg)
-      dislike = findViewById(R.id.dislikeImg)
-      wut = findViewById(R.id.survey_wut)
-      say = findViewById(R.id.sayImg)
-      like_text = findViewById(R.id.like_text)
-      dislike_text = findViewById(R.id.dislike_text)
-      say_text = findViewById(R.id.say_text)
-
-      wut_field!!.setOnCheckedChangeListener { _, _ ->
-         if (wut_field!!.isChecked) {
-
-            findViewById<View>(R.id.survey_wut).visibility = View.INVISIBLE
-            wut_nec!!.isEnabled = false
-            bwut = false
-            bwut_opt = false
-            if (yes_no!!.isChecked) {
-               yes_no!!.isChecked = false
+            survey_wut!!.visibility = View.INVISIBLE
+            field_necessary!!.isEnabled = false
+            isWut = false
+            isWutOptional = false
+            if (inc_yn!!.isChecked) {
+               inc_yn!!.isChecked = false
             }
          } else {
-            findViewById<View>(R.id.survey_wut).visibility = View.VISIBLE
-            if (!inc_say!!.isChecked || !yes_no!!.isChecked) {
-               wut_nec!!.isEnabled = true
+            survey_wut!!.visibility = View.VISIBLE
+            if (!inc_say!!.isChecked || !inc_yn!!.isChecked) {
+               field_necessary!!.isEnabled = true
             }
-            bwut = true
+            isWut = true
          }
       }
-      wut_nec!!.setOnCheckedChangeListener { _, _ ->
-         if (wut_nec!!.isChecked) {
-            bwut_opt = true
-            wut!!.hint = "What You Think (Optional)"
+
+      view.field_necessary!!.setOnCheckedChangeListener { _, _ ->
+         if (field_necessary!!.isChecked) {
+            isWutOptional = true
+            survey_wut!!.hint = "This Field Will Be Optional"
          } else {
-            wut!!.hint = "What You Think (Mandatory)"
-            bwut_opt = false
+            survey_wut!!.hint = "This Field Will Be Mandatory"
+            isWutOptional = false
          }
       }
-      yes_no!!.setOnCheckedChangeListener { _, _ ->
-         if (yes_no!!.isChecked) {
-            if (wut_field!!.isChecked) {
-               wut_field!!.isChecked = false
+
+      view.inc_yn!!.setOnCheckedChangeListener { _, _ ->
+         if (inc_yn!!.isChecked) {
+            if (inc_field!!.isChecked) {
+               inc_field!!.isChecked = false
             }
-            wut_nec!!.isChecked = false
-            wut_nec!!.isEnabled = false
-            bwut_opt = false
-            byes_no = false
-            dislike!!.setImageResource(R.drawable.dislike)
-            dislike_text!!.setTextColor(resources.getColor(R.color.darkGrey))
-            like!!.setImageResource(R.drawable.like)
-            like_text!!.setTextColor(resources.getColor(R.color.darkGrey))
+            field_necessary!!.isChecked = false
+            field_necessary!!.isEnabled = false
+            isWutOptional = false
+            isYesNo = false
+            dislikeImg!!.setImageResource(R.drawable.dislike)
+            dislike_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
+            likeImg!!.setImageResource(R.drawable.like)
+            like_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
          } else {
-            if (wut_field!!.isChecked) {
-               wut_nec!!.isEnabled = false
-            } else if (inc_say!!.isChecked) {
-               wut_nec!!.isEnabled = true
-            } else {
-               wut_nec!!.isEnabled = true
+            when {
+               inc_field!!.isChecked -> field_necessary!!.isEnabled = false
+               inc_say!!.isChecked -> field_necessary!!.isEnabled = true
+               else -> field_necessary!!.isEnabled = true
             }
 
-            byes_no = true
-            dislike!!.setImageResource(R.drawable.dislike_red)
-            dislike_text!!.setTextColor(resources.getColor(R.color.Red))
-            like!!.setImageResource(R.drawable.like_green)
-            like_text!!.setTextColor(resources.getColor(R.color.green))
+            isYesNo = true
+            dislikeImg!!.setImageResource(R.drawable.dislike_red)
+            dislike_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.Red))
+            likeImg!!.setImageResource(R.drawable.like_green)
+            like_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.green))
          }
       }
-      inc_say!!.setOnCheckedChangeListener { _, _ ->
+      view.inc_say!!.setOnCheckedChangeListener { _, _ ->
          if (inc_say!!.isChecked) {
-            if (yes_no!!.isChecked) {
-               wut_nec!!.isChecked = false
-               wut_nec!!.isEnabled = false
-               bwut_opt = false
+            if (inc_yn!!.isChecked) {
+               field_necessary!!.isChecked = false
+               field_necessary!!.isEnabled = false
+               isWutOptional = false
             }
-            bsay = false
-            say!!.setImageResource(R.drawable.can_say)
-            say_text!!.setTextColor(resources.getColor(R.color.darkGrey))
+            isSay = false
+            sayImg!!.setImageResource(R.drawable.can_say)
+            say_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.darkGrey))
          } else {
-            if (!wut_field!!.isChecked) {
-               wut_nec!!.isEnabled = true
+            if (!inc_field!!.isChecked) {
+               field_necessary!!.isEnabled = true
             }
-            if (yes_no!!.isChecked) {
-               wut_nec!!.isEnabled = false
+            if (inc_yn!!.isChecked) {
+               field_necessary!!.isEnabled = false
             }
-            bsay = true
-            say!!.setImageResource(R.drawable.cant_say)
-            say_text!!.setTextColor(resources.getColor(R.color.orange))
+            isSay = true
+            sayImg!!.setImageResource(R.drawable.cant_say)
+            say_text!!.setTextColor(ContextCompat.getColor(context!!, R.color.orange))
          }
       }
-      findViewById<View>(R.id.submit).setOnClickListener {
-         val builder = ProgressDialog(this@goSurvey)
+      view.submit!!.setOnClickListener {
+         val builder = ProgressDialog(context!!)
          builder.setMessage("Submitting...")
          builder.setProgressStyle(ProgressDialog.STYLE_SPINNER)
          builder.setCancelable(true)
          builder.progress = 0
 
          map.clear()
-         map["likeDislike"] = byes_no
-         map["say"] = bsay
-         map["wut"] = bwut
-         map["wutOptional"] = bwut_opt
-         map["heading"] = heading!!
+         map["likeDislike"] = isYesNo
+         map["say"] = isSay
+         map["wut"] = isWut
+         map["wutOptional"] = isWutOptional
+         map["heading"] = heading
          map["open"] = true
          map["noLike"] = 0
          map["noDislike"] = 0
          map["noSay"] = 0
          map["noWut"] = 0
-         map["admin"] = MyAlarm().getValue(this@goSurvey, Constant.cellNumber!!)!!
-         map["description"] = description!!
+         map["admin"] = MyAlarm().getValue(context!!, Constant.cellNumber!!)!!
+         map["description"] = description
 
-         if (ready) {
+         if (isReady) {
             val timestamp = System.currentTimeMillis()
             map["surveyNo"] = timestamp
             builder.show()
@@ -194,16 +167,24 @@ class goSurvey : AppCompatActivity() {
                val map = HashMap<String, String>()
                map["name"] = "What You Think..?"
                map["topic"] = "mmstq.com.wut.goSurvey"
-               map["text"] = heading!!
+               map["text"] = heading
                builder.dismiss()
                val fd = FirebaseDatabase.getInstance()
                        .reference.child("messages")
                fd.push().setValue(map)
             }.addOnFailureListener { e ->
                builder.dismiss()
-               Toast.makeText(this@goSurvey, e.message, Toast.LENGTH_SHORT).show()
+               Toast.makeText(context!!, e.message, Toast.LENGTH_SHORT).show()
             }
          }
       }
+      return view
+   }
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      activity = getActivity()
+      
+
    }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   android:layout_width="@dimen/_180sdp"
+   android:layout_height="@dimen/_120sdp"
+   android:layout_centerHorizontal="true"
+   android:layout_centerVertical="true"
+   android:gravity="center"
+   app:cardBackgroundColor="@color/dialogColor"
+   app:cardCornerRadius="5dp"
+   app:cardElevation="16dp"
+   app:cardUseCompatPadding="true">
+
+   <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center">
+
+      <Switch
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textOff="OFF"
+         android:textOn="ON"
+         android:id="@+id/switchDN"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="@dimen/_10sdp"
+         android:thumb="@drawable/customswitchselector"
+         android:track="@drawable/custom_shape" />
+
+      <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="@dimen/_10sdp"
+         android:textAlignment="center"
+         android:textSize="@dimen/_15ssp"
+         android:textStyle="bold"
+         android:id="@+id/change"
+         android:text="Change Theme"
+         android:textColor="@color/subHeadingText"
+         android:layout_alignParentBottom="true"/>
+
+
+   </RelativeLayout>
+</androidx.cardview.widget.CardView>

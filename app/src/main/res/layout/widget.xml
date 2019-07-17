@@ -9,39 +9,39 @@
    <LinearLayout
       android:id="@+id/rl"
       android:layout_width="match_parent"
-      android:layout_height="30dp"
-      android:weightSum="4"
-      android:paddingStart="5dp"
-      android:paddingEnd="5dp"
+      android:layout_height="@dimen/_24sdp"
       android:background="@drawable/wb_header"
       android:gravity="center_horizontal|center_vertical"
-      android:orientation="horizontal">
+      android:orientation="horizontal"
+      android:paddingStart="@dimen/_5sdp"
+      android:paddingEnd="@dimen/_5sdp"
+      android:weightSum="4">
 
       <ImageView
          android:id="@+id/left"
          android:layout_width="0dp"
+         android:layout_height="@dimen/_17sdp"
          android:layout_weight="1"
-         android:layout_height="20dp"
          android:src="@drawable/left" />
 
       <TextView
          android:id="@+id/action_button"
          android:layout_width="0dp"
+         android:layout_height="wrap_content"
          android:layout_weight="2"
-         android:layout_height="60dp"
          android:fontFamily="sans-serif-condensed-medium"
          android:gravity="center_vertical"
          android:text="Today"
          android:textAlignment="center"
-         android:textColor="@color/darkblue"
-         android:textSize="15sp"
+         android:textColor="@color/darkBlue"
+         android:textSize="@dimen/_13ssp"
          tools:ignore="HardcodedText" />
 
       <ImageView
          android:id="@+id/right"
          android:layout_width="0dp"
+         android:layout_height="@dimen/_17sdp"
          android:layout_weight="1"
-         android:layout_height="20dp"
          android:src="@drawable/right" />
 
    </LinearLayout>
@@ -51,16 +51,16 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_below="@id/rl"
-      android:layout_marginTop="-2dp"
-      android:fontFamily="sans-serif-thin"
-      android:lineSpacingExtra="2px"
-      android:padding="5dp"
-      android:text="this is tv"
+      android:fontFamily="sans-serif-condensed-light"
       android:gravity="center_vertical"
+      android:lineSpacingExtra="@dimen/_1sdp"
+      android:paddingStart="@dimen/_3sdp"
+      android:paddingEnd="@dimen/_3sdp"
+      android:text="@string/schedule"
       android:textAlignment="center"
       android:textColor="@color/white"
-      android:textSize="16sp"
-      android:textStyle="bold">
+      android:textSize="@dimen/_13ssp"
+      android:textStyle="normal">
 
    </TextView>
 

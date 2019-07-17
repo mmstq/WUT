@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    android:visible="true"
+    android:dither="true"
+    android:useLevel="false">
+    <solid
+        android:color="@color/sliderColor"/>
+    <corners
+        android:radius="35dp"/>
+    <size
+        android:width="100dp"
+        android:height="10dp" />
+</shape>

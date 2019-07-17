@@ -3,7 +3,7 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
-   android:background="@color/darkskyblue">
+   android:background="@color/darkSkyBlue">
 
    <LinearLayout
       android:layout_width="match_parent"
@@ -22,57 +22,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:fontFamily="sans-serif-black"
             android:text="Welcome To WUT"
             android:textColor="#fff"
-            android:textSize="25sp"
+            android:textSize="@dimen/_23ssp"
             android:textStyle="bold" />
 
          <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="sans-serif"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="sans-serif-light"
             android:text="@string/description"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="italic" />
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="normal" />
 
          <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="@dimen/_5sdp">
 
             <Button
                android:id="@+id/exit"
                style="?android:attr/borderlessButtonStyle"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content"
-               android:layout_marginEnd="20dp"
+               android:layout_width="@dimen/_120sdp"
+               android:layout_height="@dimen/_40sdp"
+               android:layout_marginEnd="@dimen/_20sdp"
                android:background="@drawable/yellow_bg"
                android:drawableStart="@drawable/exit"
-               android:paddingStart="25dp"
-               android:paddingEnd="15dp"
+               android:paddingStart="@dimen/_25sdp"
+               android:paddingEnd="@dimen/_15sdp"
                android:text="Exit"
                android:textColor="@color/white" />
 
             <Button
                android:id="@+id/github"
                style="?android:attr/borderlessButtonStyle"
-               android:layout_width="120dp"
-               android:layout_height="wrap_content"
+               android:layout_width="@dimen/_120sdp"
+               android:layout_height="@dimen/_40sdp"
                android:background="@drawable/whitebutton"
                android:drawableStart="@drawable/linkgh"
                android:drawablePadding="-10dp"
-               android:paddingStart="18dp"
+               android:paddingStart="@dimen/_18sdp"
                android:text="GitHub"
                android:textColor="@color/white" />
 
@@ -92,56 +92,57 @@
             android:background="@color/white" />
 
          <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:src="@drawable/user" />
 
          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:fontFamily="sans-serif-black"
             android:text="Login"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/_20ssp" />
 
          <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp">
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_40sdp">
 
             <ProgressBar
                android:id="@+id/pb"
-               android:layout_width="45dp"
+               android:layout_width="@dimen/_45sdp"
                android:layout_height="wrap_content"
                android:layout_alignTop="@id/phone_number"
                android:layout_alignEnd="@id/phone_number"
                android:layout_alignBottom="@id/phone_number"
-               android:layout_marginEnd="2dp"
-               android:padding="3dp"
+               android:layout_marginEnd="@dimen/_2sdp"
+               android:padding="@dimen/_3sdp"
                android:theme="@style/login"
-               android:translationZ="2dp"
+               android:translationZ="@dimen/_2sdp"
                android:visibility="gone"
                tools:targetApi="lollipop" />
 
             <EditText
                android:id="@+id/phone_number"
                android:layout_width="match_parent"
-               android:layout_height="45dp"
+               android:layout_height="@dimen/_38sdp"
                android:background="@drawable/white_bg"
                android:drawableStart="@drawable/person"
-               android:drawablePadding="2dp"
+               android:drawablePadding="@dimen/_2sdp"
                android:hint="+91"
                android:inputType="phone"
+               android:textStyle="bold"
                android:maxLength="10"
                android:maxLines="1"
-               android:paddingStart="10dp"
-               android:paddingEnd="10dp"
-               android:textColor="@color/darkblue" />
+               android:paddingStart="@dimen/_10sdp"
+               android:paddingEnd="@dimen/_10sdp"
+               android:textColor="@color/headingText" />
 
 
          </RelativeLayout>
@@ -150,17 +151,17 @@
          <Button
             android:id="@+id/login"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/widget_border"
             android:drawableStart="@drawable/send"
-            android:paddingStart="20dp"
-            android:paddingEnd="15dp"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_15sdp"
             android:text="Send OTP"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="@dimen/_15ssp"
             android:textStyle="bold" />
 
       </LinearLayout>

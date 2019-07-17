@@ -2,42 +2,38 @@ package mmstq.com.wut
 
 import android.app.Activity
 import android.app.ProgressDialog
-import android.os.Handler
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-
+import android.os.Handler
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.buy.*
+import kotlinx.android.synthetic.main.buy.view.*
 
-class cSurvey : AppCompatActivity() {
+class CSurvey : Fragment() {
    private var activity: Activity? = null
    private var adapterRecycler: Adapter? = null
-   private var rv: RecyclerView? = null
    private var pd: ProgressDialog? = null
 
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-      setContentView(R.layout.buy)
+      activity = getActivity()
+   }
 
-      activity = this@cSurvey
+   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+      val view = inflater.inflate(R.layout.buy, container, false)
       pd = ProgressDialog(activity)
       pd!!.setMessage("Loading Survey")
       pd!!.setProgressStyle(ProgressDialog.STYLE_SPINNER)
       pd!!.isIndeterminate = true
       pd!!.setCancelable(false)
       pd!!.progress = 0
-
-      rv = findViewById(R.id.listview)
-
-      onRun()
-
-   }
-
-   private fun onRun() {
       pd!!.show()
       val q = FirebaseFirestore.getInstance().collection("Survey").orderBy("surveyNo", Query.Direction.DESCENDING)
 
@@ -45,19 +41,25 @@ class cSurvey : AppCompatActivity() {
               .setQuery(q, myData::class.java)
               .build()
       adapterRecycler = Adapter(options)
-      rv!!.setHasFixedSize(true)
-      rv!!.layoutManager = LinearLayoutManager(activity)
-      rv!!.adapter = adapterRecycler
+      view.listview!!.setHasFixedSize(true)
+      view.listview!!.layoutManager = LinearLayoutManager(activity)
+      view.listview!!.adapter = adapterRecycler
       adapterRecycler!!.notifyDataSetChanged()
       Handler().postDelayed({ pd!!.dismiss() }, 800)
+      return view
+
    }
 
-   public override fun onStart() {
+   private fun onRun() {
+
+   }
+
+   override fun onStart() {
       super.onStart()
       adapterRecycler!!.startListening()
    }
 
-   public override fun onStop() {
+   override fun onStop() {
       super.onStop()
       adapterRecycler!!.stopListening()
    }

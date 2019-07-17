@@ -15,17 +15,19 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 import java.text.MessageFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class Update {
 
    companion object {
-      private var ds: DocumentSnapshot? = null
       private var version: Double = 0.toDouble()
       private var updVer: Double = 0.toDouble()
       private var updTitle: String? = null
       private var des: String? = null
       private var link: String? = null
+
 
       fun onCheck(context: Context) {
          val db = FirebaseFirestore.getInstance()
@@ -33,16 +35,16 @@ class Update {
          dr.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
 
-               ds = task.result
+               val ds = task.result
                var isAvailable = false
                if (ds != null) {
-                  isAvailable = ds!!.getBoolean("is_available")!!
-                  updVer = java.lang.Double.parseDouble(ds!!.getString("version")!!)
+                  isAvailable = ds.getBoolean("is_available")!!
+                  updVer = java.lang.Double.parseDouble(ds.getString("version")!!)
 
-                  link = ds!!.getString("url")
+                  val link = ds.getString("url")
                   Constant.share_link = link
-                  updTitle = ds!!.getString("updTitle")
-                  des = ds!!.getString("description")
+                  updTitle = ds.getString("updTitle")
+                  des = ds.getString("description")
                   des = if (des != null) des!!.replace("/", "\n") else ""
                }
                try {

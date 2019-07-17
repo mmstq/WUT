@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.widget.RemoteViews
 import java.util.*
 
@@ -15,7 +14,7 @@ class WidgetAdapter : AppWidgetProvider() {
 
    private var myAlarm = MyAlarm()
    private val action = "mmstq.com.wut.WIDGET_UPDATE"
-   private val getDay = arrayOf("Non", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+   private val getDay = arrayOf("Update", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
 
 
    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
@@ -63,7 +62,7 @@ class WidgetAdapter : AppWidgetProvider() {
 
             day = sp.getInt("day_int", calendar.get(Calendar.DAY_OF_WEEK))
             --day
-            if (day == 1) day = 7
+            if (day == 1 || day == 0) day = 7
 
          }
       }
