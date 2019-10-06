@@ -3,7 +3,6 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
-   android:background="@drawable/widget_border"
    android:gravity="center_horizontal">
 
    <LinearLayout
@@ -33,7 +32,7 @@
          android:gravity="center_vertical"
          android:text="Today"
          android:textAlignment="center"
-         android:textColor="@color/darkBlue"
+         android:textColor="#505050"
          android:textSize="@dimen/_13ssp"
          tools:ignore="HardcodedText" />
 
@@ -46,22 +45,17 @@
 
    </LinearLayout>
 
-   <TextView
-      android:id="@+id/textview"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
+   <GridView
+      android:id="@+id/gv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       android:layout_below="@id/rl"
-      android:fontFamily="sans-serif-condensed-light"
-      android:gravity="center_vertical"
-      android:lineSpacingExtra="@dimen/_1sdp"
-      android:paddingStart="@dimen/_3sdp"
-      android:paddingEnd="@dimen/_3sdp"
-      android:text="@string/schedule"
-      android:textAlignment="center"
-      android:textColor="@color/white"
-      android:textSize="@dimen/_13ssp"
-      android:textStyle="normal">
+      android:layout_marginTop="3dp"
+      android:background="@android:color/transparent"
+      android:horizontalSpacing="1dp"
+      android:numColumns="2"
+      android:verticalSpacing="1dp">
 
-   </TextView>
+   </GridView>
 
 </RelativeLayout>

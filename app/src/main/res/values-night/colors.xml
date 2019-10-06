@@ -6,8 +6,8 @@
    <color name="dialogColor">#FF2A3F48</color>
    <color name="sliderColor">#1E2D35</color>
    <color name="darkSkyBlue">#03253A</color>
-   <color name="headingText">#BDBDBD</color>
-   <color name="subHeadingText">#E6E6E6</color>
+   <color name="headingText">#E6E6E6</color>
+   <color name="subHeadingText">#BDBDBD</color>
    <color name="darkGrey">#202020</color>
    <color name="Red">#f1002c</color>
    <color name="darkBlue">#23283a</color>

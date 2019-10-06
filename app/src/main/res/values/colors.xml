@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-   <color name="colorPrimary">#ffab00</color>
-   <color name="colorPrimaryDark">#ffab00</color>
-   <color name="colorAccent">#006cab</color>
+   <color name="colorPrimary">#8BC34A</color>
+   <color name="colorPrimaryDark">#4CAF50</color>
+   <color name="colorAccent">#8BC34A</color>
    <color name="darkSkyBlue">#03253A</color>
    <color name="dialogColor">#FFFFFF</color>
    <color name="sliderColor">#CFCFCF</color>
    <color name="background">#FFFFFF</color>
-   <color name="headingText">#464646</color>
+   <color name="headingText">#616161</color>
    <color name="subHeadingText">#7A7A7A</color>
-   <color name="darkGrey">#202020</color>
-   <color name="Red">#f1002c</color>
    <color name="darkBlue">#23283a</color>
-   <color name="textField">#FFFFFF</color>
-   <color name="green">#65d317</color>
-   <color name="orange">#ff6f00</color>
-   <color name="skyBlue">#03a9f4</color>
    <color name="blueGray">#FF2A3F48</color>
    <color name="white">#FFFFFF</color>
 </resources>

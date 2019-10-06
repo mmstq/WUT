@@ -71,9 +71,9 @@ class VerifyOTP : DialogFragment() {
    }
 
    private val mCallBack = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-      override fun onCodeSent(s: String?, forceResendingToken: PhoneAuthProvider.ForceResendingToken?) {
-         super.onCodeSent(s, forceResendingToken)
-         verificationID = s
+      override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+         super.onCodeSent(p0, p1)
+         verificationID = p0
       }
 
       override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {

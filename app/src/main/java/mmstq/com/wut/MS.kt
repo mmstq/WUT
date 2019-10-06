@@ -11,11 +11,10 @@ import com.google.firebase.messaging.RemoteMessage
 
 class MS : FirebaseMessagingService() {
 
-   override fun onMessageReceived(remoteMessage: RemoteMessage?) {
+   override fun onMessageReceived(p0: RemoteMessage) {
 
-      //Calling method topsb generate notification
-      sendNotification(remoteMessage!!.notification!!.title,
-              remoteMessage.notification!!.body)
+      sendNotification(p0.notification!!.title,
+              p0.notification!!.body)
    }
 
    //This method is only generating push notification

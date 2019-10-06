@@ -8,10 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="RedAccent" parent="ThemeOverlay.AppCompat.Light">
-        <item name="colorAccent">@color/orange</item>
-    </style>
-
     <style name="login" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/darkBlue</item>
         <item name="colorAccent">#23283a</item>

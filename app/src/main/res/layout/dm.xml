@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:background="@drawable/widget_border"
+   android:gravity="center"
+   android:layout_margin="1dp"
+   android:paddingStart="2dp"
+   android:orientation="vertical"
+   android:paddingTop="4dp"
+   android:paddingBottom="7dp"
+   android:paddingEnd="2dp">
+
+   <ImageView
+      android:id="@+id/groups"
+      android:layout_width="match_parent"
+      android:minHeight="2dp"
+      android:layout_height="4dp" />
+
+   <TextView
+      android:id="@+id/lable"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="sans-serif-light"
+      android:ellipsize="marquee"
+      android:focusable="true"
+      android:focusableInTouchMode="true"
+      android:singleLine="true"
+      android:textAlignment="center"
+      android:textSize="@dimen/_11ssp"
+      android:gravity="center"
+      android:textAppearance="?android:attr/textAppearanceSmall"
+      android:textColor="@color/white" />
+
+</LinearLayout>

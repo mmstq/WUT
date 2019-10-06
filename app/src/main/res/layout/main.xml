@@ -2,82 +2,140 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
    xmlns:app="http://schemas.android.com/apk/res-auto"
    xmlns:tools="http://schemas.android.com/tools"
+   android:id="@+id/rlmain"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
    android:background="@color/background"
    tools:context=".Main">
 
+
    <ImageView
-      android:id="@+id/main"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/main_image"
+      android:layout_width="@dimen/_70sdp"
+      android:layout_height="@dimen/_60sdp"
+      android:layout_above="@id/navigationView"
+      android:layout_alignParentEnd="true"
+      android:layout_marginEnd="@dimen/_12sdp"
+      android:src="@drawable/tree" />
+
+   <ImageView
+      android:layout_width="@dimen/_70sdp"
+      android:layout_height="@dimen/_30sdp"
+      android:layout_above="@id/navigationView"
       android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:scaleType="centerInside"
-      android:layout_marginTop="@dimen/_20sdp"
-      android:src="@drawable/main" />
-
-   <Button
-      android:id="@+id/surveyButton"
-      android:layout_width="@dimen/_160sdp"
-      android:layout_height="@dimen/_40sdp"
-      android:layout_below="@+id/main"
-      android:layout_marginTop="@dimen/_15sdp"
-      android:layout_centerHorizontal="true"
-      android:background="@drawable/orange_bg"
-      android:drawableStart="@drawable/survey"
-      android:drawablePadding="-25dp"
-      android:fontFamily="sans-serif-condensed"
-      android:paddingStart="@dimen/_35sdp"
-      android:text="Opinions"
-      android:textColor="@color/white"
-      android:textStyle="bold" />
-
-
-   <Button
-      android:id="@+id/im"
-      android:layout_width="@dimen/_160sdp"
-      android:layout_height="@dimen/_40sdp"
-      android:layout_below="@id/surveyButton"
-      android:layout_centerHorizontal="true"
-      android:layout_marginTop="@dimen/_5sdp"
-      android:background="@drawable/green_bg"
-      android:drawableStart="@drawable/message"
-      android:drawablePadding="-10dp"
-      android:fontFamily="sans-serif-condensed"
-      android:paddingStart="@dimen/_22sdp"
-      android:text="Instant Msg"
-      android:textColor="@color/white"
-      android:textStyle="bold" />
-
-   <Button
-      android:id="@+id/subs"
-      android:layout_width="@dimen/_160sdp"
-      android:layout_height="@dimen/_40sdp"
-      android:layout_below="@id/im"
-      android:layout_centerHorizontal="true"
-      android:layout_marginTop="@dimen/_5sdp"
       android:background="@drawable/bluegray_bg"
-      android:drawableStart="@drawable/aler"
-      android:drawablePadding="-5dp"
-      android:fontFamily="sans-serif-condensed"
-      android:paddingStart="@dimen/_20sdp"
-      android:text="Subscription"
-      android:textColor="@color/white"
-      android:textStyle="bold" />
+      android:layout_marginStart="@dimen/_5sdp"
+      android:layout_marginBottom="@dimen/_5sdp"
+      android:src="@drawable/fb" />
 
+
+   <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:orientation="vertical"
+      android:paddingBottom="@dimen/_20sdp">
+
+      <ImageView
+         android:layout_width="@dimen/_135sdp"
+         android:layout_height="@dimen/_135sdp"
+         android:layout_marginStart="@dimen/_10sdp"
+         android:layout_marginTop="@dimen/_10sdp"
+         android:background="@drawable/me" />
+
+      <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:fontFamily="sans-serif-condensed-light"
+         android:paddingLeft="@dimen/_12ssp"
+         android:paddingRight="@dimen/_12ssp"
+         android:text="@string/thanking"
+         android:textAlignment="center"
+         android:textColor="@color/headingText"
+         android:textSize="@dimen/_16ssp" />
+
+
+      <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="@dimen/_50sdp"
+         android:layout_marginTop="@dimen/_10sdp"
+         android:fontFamily="sans-serif-condensed"
+         android:text="Dev:"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="@color/headingText"
+         android:textSize="@dimen/_16ssp"
+         android:textStyle="bold" />
+
+      <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="@dimen/_50sdp"
+         android:fontFamily="sans-serif"
+         android:text="Mohd Mustak"
+         android:textColor="@color/headingText"
+         android:textSize="@dimen/_13ssp"
+         android:textStyle="normal" />
+
+
+      <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="@dimen/_50sdp"
+         android:layout_marginTop="@dimen/_12sdp"
+         android:fontFamily="sans-serif-condensed"
+         android:text="Address:"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="@color/headingText"
+         android:textSize="@dimen/_16ssp"
+         android:textStyle="bold" />
+
+      <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="@dimen/_50sdp"
+         android:fontFamily="sans-serif"
+         android:text="@string/address_about"
+         android:textColor="@color/headingText"
+         android:textSize="@dimen/_12ssp"
+         android:textStyle="normal" />
+
+      <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="@dimen/_50sdp"
+         android:layout_marginTop="@dimen/_12sdp"
+         android:fontFamily="sans-serif-condensed"
+         android:text="Contact:"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="@color/headingText"
+         android:textSize="@dimen/_16ssp"
+         android:textStyle="bold" />
+
+      <TextView
+         android:id="@+id/contact"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="@dimen/_50sdp"
+         android:fontFamily="sans-serif"
+         android:text=""
+         android:textColor="@color/headingText"
+         android:textSize="@dimen/_13ssp"
+         android:textStyle="normal" />
+
+
+   </LinearLayout>
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
       android:id="@+id/navigationView"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
       android:background="@color/colorPrimary"
       android:saveEnabled="true"
-      android:layout_alignParentBottom="true"
-      app:labelVisibilityMode="labeled"
       app:itemBackground="@color/colorPrimary"
       app:itemIconTint="@color/white"
       app:itemTextColor="@color/white"
+      app:labelVisibilityMode="labeled"
       app:menu="@menu/navigation">
 
    </com.google.android.material.bottomnavigation.BottomNavigationView>

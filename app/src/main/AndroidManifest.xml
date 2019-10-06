@@ -4,8 +4,6 @@
    package="mmstq.com.wut">
 
    <uses-permission android:name="android.permission.INTERNET" />
-   <uses-permission android:name="android.permission.WAKE_LOCK" />
-   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
    <application
       android:allowBackup="true"
@@ -15,8 +13,6 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       tools:ignore="GoogleAppIndexingWarning">
-      <activity android:name=".Survey"></activity>
-      <activity android:name=".MainActivity" />
 
       <meta-data
          android:name="com.google.firebase.messaging.default_notification_icon"
@@ -28,6 +24,8 @@
       <receiver android:name=".WidgetAdapter">
          <intent-filter>
             <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            <action android:name=".WidgetAdapter.ACTION_RIGHT" />
+            <action android:name=".WidgetAdapter.ACTION_LEFT" />
          </intent-filter>
 
          <meta-data
@@ -44,16 +42,10 @@
             <action android:name="com.google.firebase.MESSAGING_EVENT" />
          </intent-filter>
       </service>
+      <service android:name=".WidgetService"
+         android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
-      <receiver android:name=".onBoot">
-         <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-         </intent-filter>
-      </receiver>
-      <receiver
-         android:name=".MyAlarm"
-         android:exported="false"
-         android:process=":remote" />
+
 
       <activity
          android:name=".Main"
@@ -64,16 +56,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
          </intent-filter>
       </activity>
-      <activity
-         android:name=".GoSurvey"
-         android:screenOrientation="portrait" />
-      <activity
-         android:name=".CSurvey"
-         android:screenOrientation="portrait" />
-      <activity
-         android:name=".Subs"
-         android:screenOrientation="portrait" />
-      <activity android:name=".IM" />
+
    </application>
 
 </manifest>

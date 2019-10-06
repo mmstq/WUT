@@ -11,10 +11,6 @@
       android:icon="@drawable/theme"
       android:title="Theme" />
 
-   <item
-      android:id="@+id/admin"
-      android:icon="@drawable/admin"
-      android:title="isAdmin" />
 
    <item
       android:id="@+id/logout"
